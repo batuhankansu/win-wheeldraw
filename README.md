@@ -37,14 +37,6 @@ npm run build
 
 ISC License
 
-## 👥 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 🐛 Known Issues
 
 - Sound may not play on some mobile browsers due to autoplay restrictions
@@ -67,8 +59,8 @@ ISC License
 ## 📞 Contact
 
 Kansu Kurumsal Technology Solutions
-- Website: [www.kansukurumsal.com](https://www.kansukurumsal.com)
-- Email: info@kansukurumsal.com
+- Website: [www.kansukurumsalteknolojicozumleri.com](https://bkansu.github.io)
+- Email: batuhankansuu@gmail.com
 
 ## 🙏 Acknowledgments
 
