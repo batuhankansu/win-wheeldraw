@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRLOUNGE Çekiliş</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="olympus-container">
+        <header>
+            <div class="bow-tie-header">
+                <img src="images/logo.png" alt="MR.LOUNGE" class="main-logo">
+            </div>
+            <div class="neon-sign">Şans Çarkını Çevir!</div>
+            <button id="helpButton" class="help-button">
+                <i class="fas fa-question-circle"></i>
+            </button>
+        </header>
+
+        <div class="wheels-container">
+            <div class="wheels-and-inputs">
+                <div class="wheel-section">
+                    <h2>Masa Numaraları</h2>
+                    <div class="wheel" id="tableWheel">
+                        <div class="wheel-pointer"></div>
+                        <canvas id="tableCanvas"></canvas>
+                    </div>
+                    <div class="input-section">
+                        <input type="text" id="tableInput" placeholder="Masa numaralarını girin (örn: 1,2,3,4,5)">
+                        <button onclick="addTableNumber()">Masa Ekle</button>
+                    </div>
+                    <div class="participants mobile-only">
+                        <h3>Katılan Masalar:</h3>
+                        <div id="tableList" class="number-list"></div>
+                    </div>
+                </div>
+
+                <div class="wheel-section">
+                    <h2>Ödüller</h2>
+                    <div class="wheel" id="prizeWheel">
+                        <div class="wheel-pointer"></div>
+                        <canvas id="prizeCanvas"></canvas>
+                    </div>
+                    <div class="input-section">
+                        <input type="text" id="prizeInput" placeholder="Ödülleri ve adetlerini girin (örn: kahve(5),çay(4),nargile(1))">
+                        <button onclick="addPrize()">Ödül Ekle</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-lists">
+                <div class="participants">
+                    <h3>Katılan Masalar:</h3>
+                    <div id="tableList-side" class="number-list"></div>
+                </div>
+                <div class="participants">
+                    <h3>Mevcut Ödüller:</h3>
+                    <div id="prizeList-side" class="number-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="spinButton" class="spin-button" onclick="spinWheels()">ÇARKLARI ÇEVİR!</button>
+        </div>
+
+        <div id="result" class="result-display"></div>
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Powered by <span class="company-name">KANSU KURUMSAL TEKNOLOJİ ÇÖZÜMLERİ</span> @2025 All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🎮 Nasıl Kullanılır?</h2>
+            <div class="instructions">
+                <section>
+                    <h3>1. Masa Numaralarını Ekleme</h3>
+                    <p>• Masa numaralarını virgülle ayırarak girin (Örn: 1,2,3,4,5)</p>
+                    <p>• Her numarayı bir kez ekleyebilirsiniz</p>
+                </section>
+                
+                <section>
+                    <h3>2. Ödülleri Ekleme</h3>
+                    <p>• Ödülleri ve adetlerini parantez içinde belirtin</p>
+                    <p>• Örnek: kahve(5),çay(3),nargile(2)</p>
+                    <p>• Özel ödüller için ünlem işareti (!) kullanın</p>
+                    <p>• Örnek: kahve!(1),çay(3) - kahve özel ödül olur</p>
+                </section>
+
+                <section>
+                    <h3>3. Çarkı Çevirme</h3>
+                    <p>• Her iki çarka da en az 2 öğe eklendikten sonra çevirme aktif olur</p>
+                    <p>• "ÇARKLARI ÇEVİR!" butonuna tıklayarak çekilişi başlatın</p>
+                    <p>• Önce masa numarası, sonra ödül çarkı dönecektir</p>
+                </section>
+
+                <section>
+                    <h3>4. Özel Ödüller</h3>
+                    <p>• Özel ödüller kırmızı renkte görünür</p>
+                    <p>• Özel ödül kazanıldığında ekstra kutlama efektleri görünür</p>
+                    <p>• Özel ödüller için farklı ses efekti çalar</p>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,710 @@
+:root {
+    --primary-color: #ffd700;
+    --secondary-color: #ff4500;
+    --background-color: #1e1e2f;
+    --text-color: #ffffff;
+    --neon-color: #ff00ff;
+    --highlight-color: #ff6347;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    background: 
+        linear-gradient(rgba(30, 30, 47, 0.9), rgba(0, 0, 0, 0.95)),
+        url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=2070') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Add animated light beams */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 69, 0, 0.1) 0%, transparent 50%);
+    animation: lightMove 20s infinite alternate;
+    pointer-events: none;
+}
+
+/* Add subtle particle effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"%3E%3C/circle%3E%3C/svg%3E');
+    animation: particleFloat 60s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes lightMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes particleFloat {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+.olympus-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 30px var(--primary-color), inset 0 0 50px rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    font-size: 3em;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+/* Add bow tie knot decorations */
+h1::before,
+h1::after {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.5em;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+h1::before {
+    left: -50px;
+}
+
+h1::after {
+    right: -50px;
+}
+
+/* Add new animation for the title */
+@keyframes titleGlow {
+    0% {
+        color: var(--primary-color);
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        transform: scale(1);
+    }
+    100% {
+        color: #ff4500;
+        text-shadow: 0 0 30px rgba(255, 69, 0, 0.9),
+                    0 0 40px rgba(255, 69, 0, 0.5);
+        transform: scale(1.05);
+    }
+}
+
+.neon-sign {
+    font-size: 2em;
+    color: var(--neon-color);
+    text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+    animation: neon-flicker 1.5s infinite alternate;
+    margin-top: 10px;
+}
+
+.wheels-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.wheels-and-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    flex: 1;
+}
+
+.side-lists {
+    display: none;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-color);
+    position: sticky;
+    top: 20px;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.side-lists .participants {
+    margin-bottom: 30px;
+}
+
+.side-lists .number-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.side-lists .number-list:has(span:nth-child(5)) span {
+    min-width: 35px;
+    min-height: 35px;
+    padding: 0;
+}
+
+.wheel-section {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.wheel-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 0%, rgba(255, 215, 0, 0.1) 50%, transparent 100%);
+    animation: shine 3s infinite;
+}
+
+.wheel {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    transition: transform 0.5s ease-out;
+}
+
+.wheel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--primary-color), inset 0 0 30px rgba(255, 215, 0, 0.5);
+    pointer-events: none;
+}
+
+/* Add light spots around the wheel */
+.wheel::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: 
+        radial-gradient(circle at 50% 0%, var(--primary-color) 0%, transparent 50%),
+        radial-gradient(circle at 100% 50%, var(--secondary-color) 0%, transparent 50%),
+        radial-gradient(circle at 50% 100%, var(--primary-color) 0%, transparent 50%),
+        radial-gradient(circle at 0% 50%, var(--secondary-color) 0%, transparent 50%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Spinning light effect class */
+.wheel.spinning::before {
+    animation: flashingLights 0.5s infinite;
+}
+
+/* Add a transition effect for when wheels stop */
+.wheel.spinning {
+    animation: wheelShake 0.2s infinite;
+}
+
+@keyframes wheelShake {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(1deg);
+    }
+    75% {
+        transform: rotate(-1deg);
+    }
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid var(--primary-color);
+    filter: drop-shadow(0 0 5px var(--primary-color));
+    z-index: 1;
+}
+
+.wheel-pointer-left {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 30px solid var(--primary-color);
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.wheel-pointer-right {
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 30px solid var(--primary-color);
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.input-section.hidden {
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--background-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: var(--highlight-color);
+    transform: scale(1.05);
+}
+
+.spin-button {
+    font-size: 1.5em;
+    padding: 15px 30px;
+    margin: 30px auto;
+    display: block;
+    background: linear-gradient(45deg, #ff4500, #ff6347);
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+.spin-button:hover {
+    background: linear-gradient(45deg, var(--highlight-color), var(--primary-color));
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.number-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.number-list span {
+    background: var(--primary-color);
+    color: var(--background-color);
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    min-width: 30px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.result-display {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(45deg, #2c1810, #4a2511);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px var(--primary-color), inset 0 0 30px rgba(255, 215, 0, 0.3);
+    animation: glow 2s infinite alternate;
+    border-radius: 10px;
+    display: none;
+}
+
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 0.9;
+    }
+    20%, 22%, 24%, 55% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 69, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 69, 0, 0);
+    }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 20px var(--primary-color); }
+    100% { box-shadow: 0 0 40px var(--primary-color); }
+}
+
+/* Add spinning lights effect */
+@keyframes flashingLights {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+@media (max-width: 1200px) {
+    .wheels-container {
+        flex-direction: column;
+    }
+    
+    .side-lists {
+        width: 100%;
+        position: static;
+    }
+
+    .side-lists .number-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .wheels-and-inputs {
+        flex-direction: column;
+    }
+    
+    .wheel-section {
+        width: 100%;
+    }
+}
+
+/* Add a casino girl silhouette */
+.casino-decoration {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 200px;
+    height: 400px;
+    background: url('https://i.imgur.com/placeholder.png') no-repeat bottom right;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.footer {
+    margin-top: 2px;
+    padding: 1px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.footer-content {
+    font-size: 0.6em;
+    color: var(--text-color);
+    opacity: 0.7;
+    line-height: 0.6;
+}
+
+.company-name {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-shadow: 0 0 3px #ff0000;
+    letter-spacing: 0.2px;
+    animation: glow 1.5s infinite alternate;
+}
+
+.footer-content:hover .company-name {
+    animation: none;
+}
+
+@media (min-width: 768px) {
+    .number-list:has(span:nth-child(5)) span {
+        min-width: 40px;
+        min-height: 40px;
+        padding: 0;
+        border-radius: 8px;
+    }
+}
+
+/* Update the bow tie header styles */
+.bow-tie-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px 0;
+    background: linear-gradient(
+        135deg,
+        rgba(30, 30, 47, 0.95) 0%,
+        rgba(0, 0, 0, 0.9) 50%,
+        rgba(30, 30, 47, 0.95) 100%
+    );
+    border-radius: 20px;
+    box-shadow: 
+        0 0 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 50px rgba(255, 215, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Style the main logo */
+.main-logo {
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px var(--primary-color));
+    animation: glow 1.5s infinite alternate;
+    padding: 15px 40px;
+    background: 
+        radial-gradient(
+            circle at center,
+            rgba(255, 215, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0) 70%
+        );
+}
+
+/* Add hover effect */
+.bow-tie-header:hover .main-logo {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    background: 
+        radial-gradient(
+            circle at center,
+            rgba(255, 215, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0) 70%
+        );
+}
+
+/* Remove old styles */
+.bow-tie-header i,
+.logo-image,
+.bow-tie-header h1 {
+    display: none;
+}
+
+/* Add special win animations */
+.special-win {
+    animation: specialWinPulse 1s infinite alternate;
+}
+
+@keyframes specialWinPulse {
+    from {
+        transform: scale(1);
+        text-shadow: 0 0 10px #FFD700;
+    }
+    to {
+        transform: scale(1.1);
+        text-shadow: 0 0 30px #FFD700, 0 0 50px #FF0000;
+    }
+}
+
+.special-win-background {
+    animation: specialWinBackground 2s infinite;
+}
+
+@keyframes specialWinBackground {
+    0% {
+        background-color: rgba(255, 0, 0, 0);
+    }
+    50% {
+        background-color: rgba(255, 0, 0, 0.1);
+    }
+    100% {
+        background-color: rgba(255, 0, 0, 0);
+    }
+}
+
+/* Update result display for special wins */
+.result-display.special-win {
+    background: linear-gradient(45deg, #4a1010, #800000);
+    border: 3px solid #FFD700;
+    box-shadow: 0 0 30px #FFD700, inset 0 0 50px rgba(255, 0, 0, 0.5);
+}
+
+/* Help button styles */
+.help-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.help-button:hover {
+    transform: scale(1.1);
+    color: #FFD700;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #1e1e2f 0%, #2d2d44 100%);
+    margin: 5% auto;
+    padding: 20px;
+    border: 2px solid var(--primary-color);
+    width: 80%;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    color: var(--text-color);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #FFD700;
+}
+
+.instructions {
+    margin-top: 20px;
+}
+
+.instructions section {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.instructions h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.instructions p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .help-button {
+        top: 10px;
+        right: 10px;
+    }
+} 
